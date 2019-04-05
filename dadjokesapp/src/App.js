@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Route, NavLink } from "react-router-dom";
 import "./App.css";
+import SignIn from "./components/SignIn";
+import DadJokes from "./components/DadJokes";
+import Home from "./components/Home";
 
 class App extends Component {
   render() {
@@ -19,17 +22,5 @@ class App extends Component {
     );
   }
 }
-
-const Home = () => {
-  return <h2>This is the Home Page.</h2>;
-};
-
-const DadJokes = () => {
-  return <h2>These are Dad Jokes</h2>;
-};
-
-const SignIn = () => {
-  return <h2>Please sign in:</h2>;
-};
 
 export default App;

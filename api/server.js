@@ -1,10 +1,6 @@
-require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-
-const secret = process.env.JWT_SECRET;
 
 const configureRoutes = require("../config/routes.js");
 

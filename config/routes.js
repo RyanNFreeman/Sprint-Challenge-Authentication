@@ -1,4 +1,11 @@
+require("dotenv").config();
+
 const axios = require("axios");
+const bcrypt = require("bcryptjs");
+
+const secret = process.env.JWT_SECRET;
+
+const Users = require("../users/userModel");
 
 const { authenticate } = require("../auth/authenticate");
 
@@ -10,6 +17,18 @@ module.exports = server => {
 
 function register(req, res) {
   // implement user registration
+
+  let user = req.body;
+  const hash = bcrypt.hashSync(user.password, 8);
+  password = hash;
+
+  Users.add(user)
+    .then(created => {
+      res.status(201).json(created);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
 }
 
 function login(req, res) {

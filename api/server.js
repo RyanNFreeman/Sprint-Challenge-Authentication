@@ -1,8 +1,12 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
+require("dotenv").config();
 
-const configureRoutes = require('../config/routes.js');
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
+
+const secret = process.env.JWT_SECRET;
+
+const configureRoutes = require("../config/routes.js");
 
 const server = express();
 
@@ -11,5 +15,9 @@ server.use(cors());
 server.use(express.json());
 
 configureRoutes(server);
+
+server.get("/", (req, res) => {
+  res.status(200).json(`sanity check yo`);
+});
 
 module.exports = server;
